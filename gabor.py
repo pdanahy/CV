@@ -48,7 +48,7 @@ if __name__ == '__main__':
     files = os.listdir(folder)
     for i in range(0,len(files)):
         img_name, img_extension = os.path.splitext(files[i])
-        if img_extension == '.jpg':
+        if img_extension == '.jpg' or img_extension == '.png':
             #print(files[i])
             filename = files[i]
 
