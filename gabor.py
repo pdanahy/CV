@@ -42,7 +42,6 @@ if options.out:
     outfolder = options.out
 else:
     outfolder = cwd
-#applyFilter(folder)
 
 
 if __name__ == '__main__':
@@ -56,24 +55,17 @@ if __name__ == '__main__':
             img = cv2.imread(os.path.join(folder,files[i]))
 
             filters = build_filters()
-            
-            #print (filters)
-
             res1 = process(img, filters)
-            #cv2.imshow('result', res1)
-            #cv2.waitKey(0)
-            #cv2.destroyAllWindows()
+            res1 = cv2.cvtColor(res1, cv2.COLOR_BGR2GRAY)
 
             height = res1.shape[0]
             width = res1.shape[1]
-            #dim = (height, width)
-            #print (dim)
             
             #resized = cv2.resize(res1, dim, interpolation = cv2.INTER_AREA)
             dst = cv2.Canny(img,100,200, apertureSize = 3)
             cv2.imwrite(outfolder + '/' + img_name + '_dst' + img_extension, dst)
             blank_image = np.zeros((height,width,3), np.uint8)
-            blank_image = 0.4*blank_image + 0.6*res1
+            #blank_image = 0.4*blank_image + 0.6*res1
 
 
             # Copy edges to the images that will display the results in BGR
